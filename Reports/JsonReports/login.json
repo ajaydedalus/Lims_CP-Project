@@ -1,0 +1,288 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "start_timestamp": "2022-09-21T07:20:08.315Z",
+        "before": [
+          {
+            "result": {
+              "duration": 10917591300,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.befLogin()"
+            }
+          }
+        ],
+        "line": 4,
+        "name": "Validating Microscopy screen under Result Management Menu",
+        "description": "",
+        "id": "microscopy;validating-microscopy-screen-under-result-management-menu",
+        "after": [
+          {
+            "result": {
+              "duration": 512000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "Hooks.snapMethod(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 11734831400,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "User in Login page",
+            "match": {
+              "location": "StepDefinitionClass.user_in_Login_page()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 12231109200,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "User enters valid username and valid password",
+            "match": {
+              "location": "StepDefinitionClass.user_enters_valid_username_and_valid_password()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 35049413100,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "User selects CP order entry",
+            "match": {
+              "location": "StepDefinitionClass.user_selects_CP_order_entry()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 28022068600,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "User doing patient search with some criteria",
+            "match": {
+              "location": "StepDefinitionClass.user_doing_patient_search_with_some_criteria()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 51463279100,
+              "status": "passed"
+            },
+            "line": 9,
+            "name": "User Creating a order for that patient",
+            "match": {
+              "location": "StepDefinitionClass.user_Creating_a_order_for_that_patient()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2207741600,
+              "status": "passed"
+            },
+            "line": 10,
+            "name": "User clicks cancel",
+            "match": {
+              "location": "StepDefinitionClass.user_clicks_cancel()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2058391600,
+              "status": "passed"
+            },
+            "line": 11,
+            "name": "User clicks Menu",
+            "match": {
+              "location": "StepDefinitionClass.user_clicks_Menu()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2038259800,
+              "status": "passed"
+            },
+            "line": 12,
+            "name": "User clicks Result Management from menu",
+            "match": {
+              "location": "StepDefinitionClass.user_clicks_Result_Management_from_menu()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2301108300,
+              "status": "passed"
+            },
+            "line": 13,
+            "name": "User clicks Microscopy under result management",
+            "match": {
+              "location": "StepDefinitionClass.user_clicks_Microscopy_under_result_management()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 12228627000,
+              "status": "passed"
+            },
+            "line": 14,
+            "name": "User enters order LRN and retreiving the patient",
+            "match": {
+              "location": "StepDefinitionClass.user_enters_order_LRN_and_retreiving_the_patient()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 20569233600,
+              "status": "passed"
+            },
+            "line": 15,
+            "name": "User selects one template from the Report Template Dropdown",
+            "match": {
+              "location": "StepDefinitionClass.user_selects_one_template_from_the_Report_Template_Dropdown()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2327308200,
+              "status": "passed"
+            },
+            "line": 16,
+            "name": "User verfifies patient banner details",
+            "match": {
+              "location": "StepDefinitionClass.user_verfifies_patient_banner_details()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 207238100,
+              "status": "passed"
+            },
+            "line": 17,
+            "name": "User Verifies the context icon displaying on left side of the screen",
+            "match": {
+              "location": "StepDefinitionClass.user_Verifies_the_context_icon_displaying_on_left_side_of_the_screen()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 3987153900,
+              "status": "passed"
+            },
+            "line": 18,
+            "name": "User Selects any reporting pathologist from the reporting pathologist field and enter some details on report editor and Click on SAVE AS option",
+            "match": {
+              "location": "StepDefinitionClass.user_Selects_any_reporting_pathologist_from_the_reporting_pathologist_field_and_enter_some_details_on_report_editor_and_Click_on_SAVE_AS_option()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 12198839200,
+              "status": "passed"
+            },
+            "line": 19,
+            "name": "User enters order LRN and retreiving the patient",
+            "match": {
+              "location": "StepDefinitionClass.user_enters_order_LRN_and_retreiving_the_patient()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 23929739000,
+              "status": "passed"
+            },
+            "line": 20,
+            "name": "User clicks on insert text blocks option",
+            "match": {
+              "location": "StepDefinitionClass.user_clicks_on_insert_text_blocks_option()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 27547697300,
+              "status": "passed"
+            },
+            "line": 21,
+            "name": "User click on Synoptic wizard option",
+            "match": {
+              "location": "StepDefinitionClass.user_click_on_Synoptic_wizard_option()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 12814930300,
+              "status": "passed"
+            },
+            "line": 22,
+            "name": "User click on Diagnosis coding option",
+            "match": {
+              "location": "StepDefinitionClass.user_click_on_Diagnosis_coding_option()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 21693493700,
+              "status": "passed"
+            },
+            "line": 23,
+            "name": "User click on Release AS option and selects Final report",
+            "match": {
+              "location": "StepDefinitionClass.user_click_on_Release_AS_option_and_selects_Final_report()"
+            },
+            "keyword": "And "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smoke"
+          }
+        ]
+      }
+    ],
+    "name": "Microscopy",
+    "description": "",
+    "id": "microscopy",
+    "keyword": "Feature",
+    "uri": "file:Microscopy.feature",
+    "tags": [
+      {
+        "name": "@smoke",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
+  }
+]
