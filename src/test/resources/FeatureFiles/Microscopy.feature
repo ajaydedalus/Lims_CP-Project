@@ -1,4 +1,4 @@
-@smoke
+
 Feature: Microscopy
 
   Scenario: Validating Microscopy screen under Result Management Menu

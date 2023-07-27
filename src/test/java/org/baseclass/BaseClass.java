@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.ss.usermodel.Cell;
@@ -25,14 +26,15 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.pojo.LoginPojo;
-
-import io.cucumber.core.api.Scenario;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseClass {
@@ -51,9 +53,21 @@ public class BaseClass {
 
 	}
 
-	public static void urlLaunch() {
+	public static void urlLaunch() throws InterruptedException {
+		LoginPojo l = new LoginPojo();
 
-		driver.get("http://130.78.62.52:107/#/Login?IPADDRESS=172.22.80.1&MACHINE=DUC-xedvHCLAsTW");
+		driver.get("https://130.78.62.243:444/#/Login");
+
+		String title = driver.getTitle();
+
+		System.out.println("title is : " + title);
+
+		// driver.get("http://130.78.62.52:107/#/Login?IPADDRESS=172.22.80.1&MACHINE=DUC-xedvHCLAsTW");
+		Thread.sleep(5000);
+		js.executeScript("arguments[0].click()", l.getAdvanceOptions());
+
+		Thread.sleep(2000);
+		js.executeScript("arguments[0].click()", l.getProceedLink());
 
 	}
 
@@ -77,7 +91,7 @@ public class BaseClass {
 
 	public static void impWait() {
 
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 	}
 
@@ -114,11 +128,19 @@ public class BaseClass {
 
 	}
 
-	public static void expWait(String s) {
+	public static void expWait(WebElement locator) {
 
-		WebDriverWait we = new WebDriverWait(driver, Duration.ofSeconds(30));
+		WebDriverWait we = new WebDriverWait(driver, Duration.ofSeconds(50));
 
-		we.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(s)));
+		we.until(ExpectedConditions.visibilityOf(locator));
+
+	}
+
+	public static void expWait5s(WebElement locator) {
+
+		WebDriverWait we = new WebDriverWait(driver, Duration.ofSeconds(50));
+
+		we.until(ExpectedConditions.visibilityOf(locator));
 
 	}
 
@@ -178,7 +200,7 @@ public class BaseClass {
 		File src = ts.getScreenshotAs(OutputType.FILE);
 
 		File dest = new File(
-				"C:\\Users\\xajaybabur\\eclipse-workspace\\MavenProject\\screenshots\\LoginPage\\" + filename);
+				"C:\\Users\\ar287\\eclipse-workspace\\LIMS\\screenshot" + filename);
 
 		FileUtils.copyFile(src, dest);
 
@@ -198,6 +220,7 @@ public class BaseClass {
 	public static void loginAlert30s() {
 
 		WebDriverWait we = new WebDriverWait(driver, Duration.ofSeconds(30));
+		;
 
 		we.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//span[text()='OK']")));
 
@@ -208,9 +231,11 @@ public class BaseClass {
 		js.executeScript("arguments[0].click()", okBtn);
 
 	}
+
 	public static void loginAlert10s() {
 
-		WebDriverWait we = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebDriverWait we = new WebDriverWait(driver, Duration.ofSeconds(30));
+		;
 
 		we.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//span[text()='OK']")));
 
@@ -246,9 +271,37 @@ public class BaseClass {
 
 	}
 
+	public static void pressEnter() throws AWTException, InterruptedException {
+
+		Robot r = new Robot();
+		r.keyPress(KeyEvent.VK_ENTER);
+		r.keyRelease(KeyEvent.VK_ENTER);
+
+	}
+
 	public static void downEnter() throws AWTException, InterruptedException {
 		Thread.sleep(2000);
 		Robot r = new Robot();
+		r.keyPress(KeyEvent.VK_DOWN);
+		r.keyRelease(KeyEvent.VK_DOWN);
+		r.keyPress(KeyEvent.VK_ENTER);
+		r.keyRelease(KeyEvent.VK_ENTER);
+
+	}
+
+	public static void down() throws AWTException, InterruptedException {
+		Thread.sleep(2000);
+		Robot r = new Robot();
+		r.keyPress(KeyEvent.VK_DOWN);
+		r.keyRelease(KeyEvent.VK_DOWN);
+
+	}
+
+	public static void downDownEnter() throws AWTException, InterruptedException {
+		Thread.sleep(2000);
+		Robot r = new Robot();
+		r.keyPress(KeyEvent.VK_DOWN);
+		r.keyRelease(KeyEvent.VK_DOWN);
 		r.keyPress(KeyEvent.VK_DOWN);
 		r.keyRelease(KeyEvent.VK_DOWN);
 		r.keyPress(KeyEvent.VK_ENTER);
@@ -308,7 +361,7 @@ public class BaseClass {
 
 		for (int i = 0; i < allRows.size(); i++) {
 
-			WebElement eachRow = allRows.get(i);
+			WebElement eachRow = allRows.get(0);
 			List<WebElement> allData = eachRow.findElements(By.tagName("td"));
 			WebElement eachData1 = allData.get(7);
 			impWait();
@@ -317,6 +370,4 @@ public class BaseClass {
 		}
 	}
 
-
-	
 }

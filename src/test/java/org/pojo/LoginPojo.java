@@ -8,25 +8,37 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPojo extends BaseClass{
-	
+public class LoginPojo extends BaseClass {
+
 	public LoginPojo() {
-		
+
 		PageFactory.initElements(driver, this);
 	}
-	
+
+	@FindBy(id = "proceed-link")
+	private WebElement proceedLink;
+
+	@FindBy(id = "details-button")
+	private WebElement advanceOptions;
+
+	public WebElement getAdvanceOptions() {
+		return advanceOptions;
+	}
+
+	public WebElement getProceedLink() {
+		return proceedLink;
+	}
+
 	@CacheLookup
-	@FindBys({
-		
-		@FindBy(id="txtUsername"),
-		@FindBy(xpath="//input[@name=\"username\"]")
-	})
+	@FindAll({
+
+			@FindBy(xpath = "//input[@name=\"username\"]"), @FindBy(xpath = "//span[text()=\"Username\"]") })
 	private WebElement txtUser;
-	
-	@FindBy(id="txtPassword")
+
+	@FindBy(xpath = "//input[@name=\"password\"]")
 	private WebElement txtPass;
-	
-	@FindBy(id="btnLogin")
+
+	@FindBy(xpath = "//button[@type=\"submit\"]")
 	private WebElement btnLogin;
 
 	public WebElement getTxtUser() {
@@ -40,42 +52,45 @@ public class LoginPojo extends BaseClass{
 	public WebElement getBtnLogin() {
 		return btnLogin;
 	}
-	@FindBy(xpath = "//div[@class=\"mat-tooltip-trigger mdi mdi-logout inactiveText1 font150 cursor\"]")
+
+	@CacheLookup
+	@FindAll({ @FindBy(xpath = "//div[@class=\"mat-tooltip-trigger mdi mdi-logout inactiveText1 font150 cursor\"]"),
+			@FindBy(xpath = "(//div[@class=\"mainpageheadericon\"])[1]") })
+
 	private WebElement logoutBtn;
 
 	public WebElement getLogoutBtn() {
 		return logoutBtn;
 	}
-	@FindAll({
-		@FindBy(id="mat-select-value-3"),
-		@FindBy(xpath="//div[@class=\"mat-select-value ng-tns-c106-7\"]")
-	})
+
+	@FindAll({ @FindBy(id = "mat-select-value-3"),
+			@FindBy(xpath = "//div[@class=\"mat-select-value ng-tns-c106-7\"]") })
 	private WebElement subdisDrop;
-	
+
 	public WebElement getSubdisDrop() {
 		return subdisDrop;
 	}
-	
-	@FindBy(xpath="(//div[text()='Histology'])[2]")
+
+	@FindBy(xpath = "(//div[text()='Histology'])[2]")
 	private WebElement subHistology;
 
 	public WebElement getSubHistology() {
 		return subHistology;
 	}
-	
-	@FindBy(xpath="//div[@class=\"mat-select-arrow ng-tns-c106-9\"]")
+
+	@FindBy(xpath = "(//span[@class=\"mat-tooltip-trigger\"])[2]")
 	private WebElement workArea;
-	
-	@FindBy(xpath="(//div[text()='SPECIMEN RECEPTION'])[2]")
+
+	@FindBy(xpath = "//span[text()=\"SPECIMEN RECEPTION\"]")
 	private WebElement speReception;
 
-	@FindBy(xpath="//i[text()='menu']")
+	@FindBy(xpath = "//i[text()='menu']")
 	private WebElement menuBtn;
-	
-	@FindBy(xpath="//div[text()=' Order management ']")
+
+	@FindBy(xpath = "//div[text()=' Order management ']")
 	private WebElement ordMgnt;
-	
-	@FindBy(xpath="(//div[text()=' CP Order entry '])[1]")
+
+	@FindBy(xpath = "(//div[text()=' CP Order entry '])[1]")
 	private WebElement cpOrder;
 
 	public WebElement getWorkArea() {
@@ -97,18 +112,19 @@ public class LoginPojo extends BaseClass{
 	public WebElement getCpOrder() {
 		return cpOrder;
 	}
-	@FindBy(id="pasnumber")
+
+	@FindBy(id = "pasnumber")
 	private WebElement otherId;
-	
-	@FindBy(id="Forename")
+
+	@FindBy(id = "Forename")
 	private WebElement gName;
-	
-	@FindBy(id="Surname")
+
+	@FindBy(id = "Surname")
 	private WebElement fName;
-	
-	@FindBy(id="mat-input-53")
+
+	@FindBy(id = "mat-input-53")
 	private WebElement dOb;
-	
+
 	public WebElement getOtherId() {
 		return otherId;
 	}
@@ -129,37 +145,44 @@ public class LoginPojo extends BaseClass{
 		return seX;
 	}
 
+	@FindBy(xpath = "(//span[text()=' SEARCH '])[2]")
+	private WebElement searchBtn;
+
 	public WebElement getSearchBtn() {
 		return searchBtn;
 	}
 
-	@FindBy(xpath="(//span[text()='Sex'])[1]")
+	@FindBy(xpath = "(//span[text()='Sex'])[1]")
 	private WebElement seX;
-	
-	@FindBy(xpath="//span[text()='Male']")
+
+	@FindBy(xpath = "//span[text()='Male']")
 	private WebElement chooseSex;
-	
+
 	public WebElement getChooseSex() {
 		return chooseSex;
 	}
 
-	@FindBy(xpath="(//span[text()=' SEARCH '])[2]")
-	private WebElement searchBtn;
-	
-	@FindBy(xpath="(//button[@aria-label=\"Open calendar\"])[1]")
+	@FindBy(xpath = "(//button[@aria-label=\"Open calendar\"])[1]")
 	private WebElement openCalender;
-	
-	@FindBy(xpath="//div[@class=\"mat-calendar-arrow\"]")
+
+	@FindBy(xpath = "//button[@aria-label=\"Choose month and year\"]")
 	private WebElement calYears;
-	
-	@FindBy(xpath="//div[text()=' 1999 ']")
+
+	@FindBy(xpath = "//div[text()=' 1999 ']")
 	private WebElement chooseYear;
-	
-	@FindBy(xpath="//div[text()=' AUG ']")
+
+	@FindBy(xpath = "//div[text()=' AUG ']")
 	private WebElement chooseMonth;
-	
-	@FindBy(xpath="//div[text()=' 31 ']")
+
+	@FindBy(xpath = "//div[text()=' 31 ']")
 	private WebElement chooseDay;
+
+	@FindBy(xpath = "//button[@aria-label=\"Previous 24 years\"]")
+	private WebElement previousMonth;
+
+	public WebElement getPreviousMonth() {
+		return previousMonth;
+	}
 
 	public WebElement getOpenCalender() {
 		return openCalender;
@@ -180,46 +203,39 @@ public class LoginPojo extends BaseClass{
 	public WebElement getChooseDay() {
 		return chooseDay;
 	}
-	
-	@FindBy(xpath="(//span[text()=' NEW ORDER '])[1]")
+
+	@FindBy(xpath = "(//span[text()=' NEW ORDER '])[1]")
 	private WebElement newOrder;
 
 	public WebElement getNewOrder() {
 		return newOrder;
 	}
-	
+
 	public WebElement getQuickOtherd() {
 		return quickOtherd;
 	}
 
-	@FindBy(xpath="//div[@class=\"mainLayerIdyTwo\"]")
+	@FindBy(xpath = "//div[@class=\"mainLayerIdyTwo\"]")
 	private WebElement quickOtherd;
-	
-	@CacheLookup
-	@FindAll({
-		@FindBy(xpath="(//input[@type=\"text\"])[1]"),
-		@FindBy(xpath="//div[text()='Location']")
-	})
-	private WebElement oeLocation;
-	
 
-	@FindBy(xpath="(//div[text()='BREH'])[1]")
-	
+	@CacheLookup
+	@FindAll({ @FindBy(xpath = "(//input[@type=\"text\"])[1]"), @FindBy(xpath = "//div[text()='Location']") })
+	private WebElement oeLocation;
+
+	@FindBy(xpath = "(//span[text()='BREH'])[1]")
+
 	private WebElement oeLocationName;
-	
-	@FindBy(xpath="(//input[@type=\"text\"])[2]")
+
+	@FindBy(xpath = "(//input[@type=\"text\"])[2]")
 	private WebElement regClinician;
-	
-	@FindBy(xpath="(//input[@type=\"text\"])[3]")
+
+	@FindBy(xpath = "(//input[@type=\"text\"])[3]")
 	private WebElement patCategory;
-	
-	@FindBy(xpath="//div[text()='NHS Patient ']")
+
+	@FindBy(xpath = "(//span[text()='NHS Patient '])[1]")
 	private WebElement selectCategory;
-	
-	@FindBy(xpath="(//span[@class=\"mat-button-wrapper\"])[1]")
-	private WebElement cpCalender;
-	
-	@FindBy(xpath="//div[text()=' 1 ']")
+
+	@FindBy(xpath = "//div[text()=' 1 ']")
 	private WebElement selectDate;
 
 	public WebElement getOeLocation() {
@@ -242,25 +258,22 @@ public class LoginPojo extends BaseClass{
 		return selectCategory;
 	}
 
-	public WebElement getCpCalender() {
-		return cpCalender;
-	}
-
 	public WebElement getSelectDate() {
 		return selectDate;
 	}
-	@FindBy(xpath="//mat-panel-title[text()='Specimen']")
+
+	@FindBy(xpath = "//mat-panel-title[text()='Specimen']")
 	private WebElement specimenSelect;
-	
-	@FindBy(xpath="(//mat-panel-title[text()='Histology'])[1]")
+
+	@FindBy(xpath = "(//mat-panel-title[text()='Histology'])[1]")
 	private WebElement selectHistolgy;
-	
-	@FindBy(xpath="//*[@id=\"SpecimenSite\"]")
+
+	@FindBy(xpath = "//*[@id=\"SpecimenSite\"]")
 	private WebElement specSite;
-	
-	@FindBy(xpath="//span[text()='Right']")
+
+	@FindBy(xpath = "//span[text()='Right']")
 	private WebElement siteSide;
-	
+
 	public WebElement getSpecimenSelect() {
 		return specimenSelect;
 	}
@@ -276,49 +289,46 @@ public class LoginPojo extends BaseClass{
 	public WebElement getSiteSide() {
 		return siteSide;
 	}
-	
-	@FindBy(xpath="//span[text()=' SAVE ']")
+
+	@FindBy(xpath = "//span[text()=' SAVE ']")
 	private WebElement orderSave;
 
 	public WebElement getOrderSave() {
 		return orderSave;
 	}
-	
-	@FindBy(xpath="//span[text()='Order details']")
+
+	@FindBy(xpath = "//span[text()='Order details']")
 	private WebElement orderDetails;
 
 	public WebElement getOrderDetails() {
 		return orderDetails;
 	}
-	@FindBy(xpath="//input[@name=\"lrn\"]")
+
+	@FindBy(xpath = "//input[@name=\"lrn\"]")
 	private WebElement textLrn;
-
-
 
 	public WebElement getTextLrn() {
 		return textLrn;
 	}
-	
-	@FindBy(xpath="//span[text()='Clinician']")
+
+	@FindBy(xpath = "//span[text()='Clinician']")
 	private WebElement enterClinician;
-	
 
 	public WebElement getEnterClinician() {
 		return enterClinician;
 	}
 
-
-	@FindBy(xpath="(//span[text()='Requesting location'])[1]")
+	@FindBy(xpath = "(//span[text()='Requesting location'])[1]")
 	private WebElement enterLocation;
-	
+
 	public WebElement getEnterLocation() {
 		return enterLocation;
 	}
-	
-	@FindBy(xpath="(//div[text()='SLN'])[2]")
+
+	@FindBy(xpath = "(//div[text()='SLN'])[2]")
 	private WebElement selectClinician;
-	
-	@FindBy(xpath="(//div[text()='BREH'])[2]")
+
+	@FindBy(xpath = "(//div[text()='BREH'])[2]")
 	private WebElement selectLocation;
 
 	public WebElement getSelectClinician() {
@@ -328,25 +338,25 @@ public class LoginPojo extends BaseClass{
 	public WebElement getSelectLocation() {
 		return selectLocation;
 	}
-	
 
-	@FindBy(xpath="//span[text()=' CANCEL ']")
+	@FindBy(xpath = "//span[text()=' CANCEL ']")
 	private WebElement cancelBtn;
-	
+
 	public WebElement getCancelBtn() {
 		return cancelBtn;
 	}
 
-	@FindBy(xpath="(//div[text()='SPECIMEN DISSECTION'])[2]")
+	@FindBy(xpath = "(//span[text()='SPECIMEN DISSECTION'])[1]")
 	private WebElement workareaSD;
 
 	public WebElement getWorkareaSD() {
 		return workareaSD;
 	}
-	@FindBy(xpath="//div[text()=' Laboratory processing ']")
+
+	@FindBy(xpath = "//div[text()=' Laboratory processing ']")
 	private WebElement lpMenu;
-	
-	@FindBy(xpath="//div[text()=' Specimen dissection ']")
+
+	@FindBy(xpath = "//div[text()=' Specimen dissection ']")
 	private WebElement selectSpeDis;
 
 	public WebElement getLpMenu() {
@@ -356,11 +366,11 @@ public class LoginPojo extends BaseClass{
 	public WebElement getSelectSpeDis() {
 		return selectSpeDis;
 	}
-	
-	@FindBy(id="lrn")
+
+	@FindBy(id = "lrn")
 	private WebElement scanField;
-	
-	@FindBy(xpath="//span[@class=\"mdi mdi-barcode-scan\"]")
+
+	@FindBy(xpath = "//span[@class=\"mdi mdi-barcode-scan\"]")
 	private WebElement barcodeClick;
 
 	public WebElement getScanField() {
@@ -370,10 +380,11 @@ public class LoginPojo extends BaseClass{
 	public WebElement getBarcodeClick() {
 		return barcodeClick;
 	}
-	@FindBy(xpath="//span[text()='YES']")
+
+	@FindBy(xpath = "//span[text()='YES']")
 	private WebElement confirmYes;
-	
-	@FindBy(xpath="//span[text()='NO']")
+
+	@FindBy(xpath = "//span[text()='NO']")
 	private WebElement confirmNo;
 
 	public WebElement getConfirmYes() {
@@ -383,24 +394,48 @@ public class LoginPojo extends BaseClass{
 	public WebElement getConfirmNo() {
 		return confirmNo;
 	}
+
 	@FindBys({
-		
-		@FindBy(id="pieces"),
-		@FindBy(xpath="//input[@name=\"pieces\"]")
-	
+
+			@FindBy(id = "pieces"), @FindBy(xpath = "//input[@name=\"pieces\"]")
+
 	})
 	private WebElement noPieces;
-	
-	@FindBy(xpath="//input[@data-placeholder=\"Dissecting user\"]")
+
+	@FindBy(xpath = "//div[text()='Dissecting user']")
 	private WebElement dissUser;
-	
-	@FindBy(xpath="//input[@data-placeholder=\"Assisting user\"]")
+
+	@FindBy(xpath = "(//placeholder[@type=\"Search\"]")
+	private WebElement searchField;;
+
+	public WebElement getRtSearchField1() {
+		return rtSearchField1;
+	}
+
+	public WebElement getRtSearchField2() {
+		return rtSearchField2;
+	}
+
+	public WebElement getRtSearchField3() {
+		return rtSearchField3;
+	}
+
+	public WebElement getRtSearchField4() {
+		return rtSearchField4;
+	}
+
+	public WebElement getSearchField() {
+		return searchField;
+	}
+
+	@FindBy(xpath = "//div[text()=\"Assisting user\"]")
 	private WebElement assUser;
-	
-	@FindBy(xpath="//input[@data-placeholder=\"Reporting pathologist\"]")
+
+	@FindBy(xpath = "//div[text()=\"Reporting pathologist\"]")
 	private WebElement repPath;
-	
-	@FindBy(xpath="//input[@data-placeholder=\"Supervising pathologist\"]")
+
+	@FindBy(xpath = "//div[text()=\"Supervising pathologist\"]")
+
 	private WebElement supPath;
 
 	public WebElement getNoPieces() {
@@ -422,10 +457,11 @@ public class LoginPojo extends BaseClass{
 	public WebElement getSupPath() {
 		return supPath;
 	}
-	@FindBy(xpath="//span[text()=' NEXT ']")
+
+	@FindBy(xpath = "//span[text()=' NEXT ']")
 	private WebElement nextBtn;
-	
-	@FindBy(xpath="//span[text()=' SAVE BLOCKS ']")
+
+	@FindBy(xpath = "//span[text()=' SAVE BLOCKS ']")
 	private WebElement saveBlocks;
 
 	public WebElement getNextBtn() {
@@ -435,9 +471,10 @@ public class LoginPojo extends BaseClass{
 	public WebElement getSaveBlocks() {
 		return saveBlocks;
 	}
-	@FindBy(xpath="//span[@class=\"mat-tooltip-trigger mdi mdi-plus-box col-md-2 col-lg-1 font\"]")
+
+	@FindBy(xpath = "//span[@class=\"mat-tooltip-trigger mdi mdi-plus-box col-md-2 col-lg-1 font\"]")
 	private WebElement addBlocks;
-	
+
 	public WebElement getAddBlocks() {
 		return addBlocks;
 	}
@@ -450,25 +487,19 @@ public class LoginPojo extends BaseClass{
 		return addBlocksDropDown;
 	}
 
-	@FindBy(xpath="//input[@type=\"number\"]")
+	@FindBy(xpath = "//input[@type=\"number\"]")
 	private WebElement addBlocksByClick;
-	
-	@FindBy(xpath="(//span[text()='Addtional block(s)'])[1]")
+
+	@FindBy(xpath = "(//span[text()='Addtional block(s)'])[1]")
 	private WebElement addBlocksDropDown;
-	
-	@CacheLookup
-	@FindBys({
-		
-		@FindBy(id="mat-option-38"),
-		@FindBy(xpath="(//div[text()='EMBED 1'])[2]")
-	
-	})
+
+	@FindBy(xpath = "//span[text()=\"EMBED 1\"]")
 	private WebElement workareaEmbed;
 
 	public WebElement getWorkareaEmbed() {
 		return workareaEmbed;
 	}
-	
+
 	public WebElement getEditVal() {
 		return editVal;
 	}
@@ -481,79 +512,83 @@ public class LoginPojo extends BaseClass{
 		return txtInstruction;
 	}
 
-	@FindBy(xpath="//div[text()=' Block processing worklist ']")
+	@FindBy(xpath = "//div[text()=' Block processing worklist ']")
 	private WebElement bpWorklist;
 
 	public WebElement getBpWorklist() {
 		return bpWorklist;
 	}
-	
-	@FindBy(xpath="//span[text()=' EDIT VALUES ']")
+
+	@FindBy(xpath = "//span[text()=' EDIT VALUES ']")
 	private WebElement editVal;
-	
-	@FindBy(xpath="//input[@data-placeholder=\"Status\"]")
+
+	@FindBy(xpath = "//input[@data-placeholder=\"Status\"]")
 	private WebElement txtStatus;
-	
-	@FindBy(id="instruction")
+
+	@FindBy(id = "instruction")
 	private WebElement txtInstruction;
-	
-	@FindBy(xpath="(//div[text()='MICROTOME 1'])[2]")
+
+	@FindBy(xpath = "(//span[text()='MICROTOME 1'])[1]")
 	private WebElement microWorkArea;
 
 	public WebElement getMicroWorkArea() {
 		return microWorkArea;
 	}
-	@FindBy(xpath="(//div[text()=' Procedure processing worklist '])[1]")
+
+	@FindBy(xpath = "(//div[text()=' Procedure processing worklist '])[1]")
 	private WebElement ppWorkArea;
-
-
 
 	public WebElement getPpWorkArea() {
 		return ppWorkArea;
 	}
-	@FindBy(xpath="//span[text()='Staining completed']")
+
+	@FindBy(xpath = "//span[text()='Staining completed']")
 	private WebElement seComplete;
 
 	public WebElement getSeComplete() {
 		return seComplete;
 	}
-	@FindBy(xpath="//div[text()=' Order verification ']")
+
+	@FindBy(xpath = "//div[text()=' Order verification ']")
 	private WebElement orderVerify;
-	
+
 	public WebElement getOrderVerify() {
 		return orderVerify;
 	}
-	@FindBy(xpath="//span[text()=' RELEASE ']")
+
+	@FindBy(xpath = "//span[text()=' RELEASE TO PATHOLOGIST ']")
 	private WebElement releaseBtn;
 
 	public WebElement getReleaseBtn() {
 		return releaseBtn;
 	}
-	@FindBy(xpath="//div[text()=' Specimen worklist ']")
+
+	@FindBy(xpath = "//div[text()=' Specimen worklist ']")
 	private WebElement spWorklist;
 
 	public WebElement getSpWorklist() {
 		return spWorklist;
 	}
+
 	@CacheLookup
 	@FindBys({
-	
-	@FindBy(id="mat-select-value-241"),
-	@FindBy(xpath="(//span[text()='Status'])[1]")
-	
+
+			@FindBy(id = "mat-select-value-241"), @FindBy(xpath = "(//span[text()='Status'])[1]")
+
 	})
 	private WebElement swStatus;
 
 	public WebElement getSwStatus() {
 		return swStatus;
 	}
-	@FindBy(xpath="(//span[text()='Priority'])[1]")
+
+	@FindBy(xpath = "(//span[text()='Priority'])[1]")
 	private WebElement prioDropDown;
-	
-	@FindBy(id="mat-checkbox-127")
+
+	@FindBy(id = "mat-checkbox-127")
 	private WebElement cWCheckBox;
-	
-	@FindBy(xpath="//span[text()=' APPLY FILTER ']")
+
+	@FindBy(xpath = "//span[text()=' APPLY FILTER ']")
 	private WebElement applyFilter;
 
 	public WebElement getPrioDropDown() {
@@ -567,10 +602,11 @@ public class LoginPojo extends BaseClass{
 	public WebElement getApplyFilter() {
 		return applyFilter;
 	}
-	@FindBy(xpath="//a[text()='AJROLE']")
+
+	@FindBy(xpath = "//a[text()=\"AJ\"]")
 	private WebElement chooseRole;
-	
-	@FindBy(id="Role")
+
+	@FindBy(id = "Role")
 	private WebElement roleDropdown;
 
 	public WebElement getChooseRole() {
@@ -580,27 +616,24 @@ public class LoginPojo extends BaseClass{
 	public WebElement getRoleDropdown() {
 		return roleDropdown;
 	}
-	@FindBy(xpath="//div[text()=' Result management ']")
-	private WebElement resultManage;
-	
-	@FindBy(xpath="//div[text()=' Typing worklist ']")
-	private WebElement typingWork;
 
-	public WebElement getResultManage() {
-		return resultManage;
-	}
-
-	public WebElement getTypingWork() {
-		return typingWork;
-	}
-	
-	@FindBy(xpath="(//span[text()='Report template'])[1]")
+	@FindBy(xpath = "(//span[text()='Report template'])[1]")
 	private WebElement rtDropdown;;
+
+	@FindBy(xpath = "(//input[@type=\"text\"])[2]")
+	private WebElement rtSearchField1;
 	
-	@FindBy(xpath="//input[@placeholder=\"Search\"]")
-	private WebElement rtSearchField;
-	
-	@FindBy(xpath="(//div[text()='CPCT1'])[2]")
+	@FindBy(xpath = "(//input[@type=\"text\"])[3]")
+	private WebElement rtSearchField2;
+
+	@FindBy(xpath = "(//input[@type=\"text\"])[4]")
+	private WebElement rtSearchField3;
+
+	@FindBy(xpath = "(//input[@type=\"text\"])[5]")
+	private WebElement rtSearchField4;
+
+
+	@FindBy(xpath = "(//div[text()='CPCT1'])[2]")
 	private WebElement chooseRt;
 
 	public WebElement getRtDropdown() {
@@ -608,31 +641,31 @@ public class LoginPojo extends BaseClass{
 	}
 
 	public WebElement getRtSearchField() {
-		return rtSearchField;
+		return rtSearchField1;
 	}
 
 	public WebElement getChooseRt() {
 		return chooseRt;
 	}
-	
-	@FindBy(id="yes")
+
+	@FindBy(id = "yes")
 	private WebElement twYes;
 
 	public WebElement getTwYes() {
 		return twYes;
 	}
-	
-	@FindBy(xpath="(//span[@class=\"mat-tooltip-trigger patient-data\"])[2]")
+
+	@FindBy(xpath = "(//span[@class=\"mat-tooltip-trigger patient-data\"])[2]")
 	private WebElement bannerGname;
 
 	public WebElement getBannerGname() {
 		return bannerGname;
 	}
-	
-	@FindBy(xpath="(//span[@class=\"mat-tooltip-trigger patient-data\"])[1]")
+
+	@FindBy(xpath = "(//span[@class=\"mat-tooltip-trigger patient-data\"])[1]")
 	private WebElement bannerFname;
-	
-	@FindBy(xpath="(//span[@class=\"patient-data\"])[2]")
+
+	@FindBy(xpath = "(//span[@class=\"patient-data\"])[2]")
 	private WebElement bannerDob;
 
 	public WebElement getBannerFname() {
@@ -642,102 +675,38 @@ public class LoginPojo extends BaseClass{
 	public WebElement getBannerDob() {
 		return bannerDob;
 	}
-	
-	@FindBy(xpath="//i[@class=\"mdi mdi-caps-lock\"]")
-	private WebElement synopticIcon;
-	
-	@FindBy(xpath="//i[@class=\"mdi mdi-file-code\"]")
-	private WebElement dcodingIcon;
-	
-	@FindBy(xpath="//i[@class=\"mdi mdi-text-recognition\"]")
-	private WebElement tblockIcon;
-	
-	@FindBy(xpath="//i[@class=\"mdi mdi-book-open-page-variant\"]")
-	private WebElement tallyIcon;
-	
-	@FindBy(xpath="//i[@class=\"mdi mdi-book-open-variant\"]")
-	private WebElement reviewTallyIcon;
 
-	public WebElement getSynopticIcon() {
-		return synopticIcon;
-	}
+	@CacheLookup
+	@FindAll({
 
-	public WebElement getDcodingIcon() {
-		return dcodingIcon;
-	}
+			@FindBy(xpath = "//div[text()=\" Labels are printed. \"]")
 
-	public WebElement getTblockIcon() {
-		return tblockIcon;
-	}
-
-	public WebElement getTallyIcon() {
-		return tallyIcon;
-	}
-
-
-
-	public WebElement getReviewTallyIcon() {
-		return reviewTallyIcon;
-	}
-	
-	@FindBy(xpath="(//span[text()='Reporting pathologist'])[1]")
-	private WebElement twRepPath;
-	
-	@FindBy(xpath="(//div[text()='AjayBabu'])[3]")
-	private WebElement twPathName;
-	
-	public WebElement getTwRepPath() {
-		return twRepPath;
-	}
-
-	public WebElement getTwPathName() {
-		return twPathName;
-	}
-	@FindBy(xpath="//span[text()=' Save as']")
-	private WebElement twSave;
-	
-	@FindBy(xpath="//span[text()='Report created']")
-	private WebElement twReportCreated;
-	
-	@FindBy(xpath="//div[@class=\"toast-bottom-right toast-container\"]")
+	})
 	private WebElement toastMsg;
-
-	public WebElement getTwSave() {
-		return twSave;
-	}
-
-	public WebElement getTwReportCreated() {
-		return twReportCreated;
-	}
 
 	public WebElement getToastMsg() {
 		return toastMsg;
 	}
-	@FindBy(xpath="//input[@name=\"textblock\"]")
-	private WebElement tblockSearchField;
-	
-	@FindBy(xpath="//span[text()=' MACRO ']")
-	private WebElement tblockExpansion;
 
-	public WebElement getTblockSearchField() {
-		return tblockSearchField;
+	@CacheLookup
+	@FindAll({ @FindBy(xpath = "//div[@role=\"alert\"]"), @FindBy(xpath = "//div[@id=\"toast-container\"]"), })
+	private WebElement toastinOV;
+
+	public WebElement getToastinOV() {
+		return toastinOV;
 	}
 
-	public WebElement getTblockExpansion() {
-		return tblockExpansion;
-	}
-	@FindBy(xpath="(//div[@id=\"editor\"])[2]")
+	@FindBy(xpath = "(//div[@id=\"editor\"])[2]")
 	private WebElement editor;
 
 	public WebElement getEditor() {
 		return editor;
 	}
-	
-	@FindBy(xpath="//ng-dropdown-panel[@role=\"listbox\"]")
+
+	@FindBy(xpath = "//ng-dropdown-panel[@role=\"listbox\"]")
 	private WebElement tCodes;
-	
-	
-	@FindBy(xpath="//div[text()=' Microscopy ']")
+
+	@FindBy(xpath = "//span[text()=\" MICROSCOPY \"]")
 	private WebElement microScpy;
 
 	public WebElement gettCodes() {
@@ -747,17 +716,18 @@ public class LoginPojo extends BaseClass{
 	public WebElement getMicroScpy() {
 		return microScpy;
 	}
-	@FindBy(xpath="//span[text()='YES']")
+
+	@FindBy(xpath = "//span[text()='YES']")
 	private WebElement repYes;
 
 	public WebElement getRepYes() {
 		return repYes;
 	}
-	
-	@FindBy(xpath="//span[text()=' Release as']")
+
+	@FindBy(xpath = "//span[text()=' Release as']")
 	private WebElement releaseAs;
-	
-	@FindBy(xpath="//span[text()='Final report']")
+
+	@FindBy(xpath = "//span[text()='Final report']")
 	private WebElement finalReport;
 
 	public WebElement getReleaseAs() {
@@ -767,35 +737,62 @@ public class LoginPojo extends BaseClass{
 	public WebElement getFinalReport() {
 		return finalReport;
 	}
-	
 
-	@FindBy(xpath="//span[text()=' Action']")
+	@FindBy(xpath = "//span[text()=' Action']")
 	private WebElement actionIcon;
-	
-	@FindBy(xpath="//span[text()='Close']")
+
+	@FindBy(xpath = "//span[text()='Close']")
 	private WebElement closeDocument;
 
 	public WebElement getActionIcon() {
 		return actionIcon;
 	}
 
+	public WebElement getMicroscopyTab() {
+		return microscopyTab;
+	}
+
 	public WebElement getCloseDocument() {
 		return closeDocument;
 	}
-	
-	@FindBy(xpath="//div[text()='Result publication history']")
+
+	@FindBy(xpath = "//div[text()='Result publication history']")
 	private WebElement rpHistory;
 
 	public WebElement getRpHistory() {
 		return rpHistory;
 	}
+
+	public WebElement getMainPageHeaderIcon() {
+		return mainPageHeaderIcon;
+	}
+
+	@FindBy(xpath = "//span[text()=\" MICROSCOPY \"]")
+	private WebElement microscopyTab;
+
+	@FindBy(xpath = "//div[@class=\"toast-bottom-right toast-container\"]")
+	private WebElement toastBottom;
+
+	public WebElement getToastBottom() {
+		return toastBottom;
+	}
+
+	@FindBy(xpath = "(//div[@class=\"mainpageheadericon\"])[1]")
+	private WebElement mainPageHeaderIcon;
+
+	@FindBy(xpath = "//span[text()='OK']")
+	private WebElement alertOk;
+
+	public WebElement getAlertOk() {
+		return alertOk;
+	}
 	
-	
-	
-	
-	
-	
-	
-	
+	@FindBy(xpath="//span[text()=\" SPECIMEN DISSECTION \"]")
+	private WebElement speDissHeader;
+
+	public WebElement getSpeDissHeader() {
+		return speDissHeader;
+	}
+
 	
 }

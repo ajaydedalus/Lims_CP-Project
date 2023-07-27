@@ -5,6 +5,7 @@ import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.time.Duration;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -40,7 +41,7 @@ public class DisposalList {
 
 		logBtn.click();
 
-		WebDriverWait we = new WebDriverWait(driver, Duration.ofSeconds(50));
+		WebDriverWait we = new WebDriverWait(driver, Duration.ofSeconds(50));;
 
 		we.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//span[text()='OK']")));
 
@@ -54,7 +55,7 @@ public class DisposalList {
 
 		js.executeScript("arguments[0].click()", subDrop);
 
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 
 		WebElement subDis = driver.findElement(By.xpath("(//div[text()=\"Histology\"])[2]"));
 

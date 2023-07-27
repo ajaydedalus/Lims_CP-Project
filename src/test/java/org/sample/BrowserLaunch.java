@@ -9,6 +9,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
@@ -26,6 +27,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BrowserLaunch {
+	WebDriverWait we;
 
 	public static void main(String[] args) throws InterruptedException, AWTException, IOException {
 
@@ -50,7 +52,7 @@ public class BrowserLaunch {
 
 		logBtn.click();
 
-		WebDriverWait we = new WebDriverWait(driver, Duration.ofSeconds(30));
+		WebDriverWait we = new WebDriverWait(driver, Duration.ofSeconds(30));;
 
 		we.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//span[text()='OK']")));
 
@@ -64,7 +66,7 @@ public class BrowserLaunch {
 
 		js.executeScript("arguments[0].click()", subDrop);
 
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 
 		WebElement subDis = driver.findElement(By.xpath("(//div[text()=\"Histology\"])[2]"));
 
