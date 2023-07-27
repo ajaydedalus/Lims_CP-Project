@@ -7,13 +7,23 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 
+	
+	<repositories>
+		<repository>
+			<id>ABAutomationTesting</id>
+			<url>https://pkgs.dev.azure.com/ABAutomationTesting/_packaging/ABAutomationTesting/maven/v1</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		
+	</repositories>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.github.ralfstuckert.pdfbox-layout</groupId>
-			<artifactId>pdfbox2-layout</artifactId>
-			<version>1.0.1</version>
-		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -69,12 +79,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.github.ralfstuckert.pdfbox-layout/pdfbox2-layout -->
-		<dependency>
-			<groupId>com.github.ralfstuckert.pdfbox-layout</groupId>
-			<artifactId>pdfbox2-layout</artifactId>
-			<version>1.0.1</version>
-		</dependency>
 
 
 
